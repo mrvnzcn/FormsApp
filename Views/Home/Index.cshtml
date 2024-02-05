@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Product>
+﻿@model ProductViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -8,7 +8,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-11">
-                    <select asp-items="ViewBag.Categories" class="form-select" name="category">
+                    <select 
+                    asp-items="@(new SelectList(Model.Categories, "CategoryId", "Name", Model.SelectedCategory))" class="form-select" 
+                    name="category">
                         <option value="0">All</option>
                     </select>
                 </div>
@@ -23,15 +25,15 @@
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th style="width: 330px;">@Html.DisplayNameFor(m => m.ProductId)</th>
-            <th style="width: 120px;">@Html.DisplayNameFor(m => m.Name)</th>
-            <th>@Html.DisplayNameFor(m => m.Image)</th>
-            <th style="width: 340px;">@Html.DisplayNameFor(m => m.Price)</th>
+            <th style="width: 330px;">@Html.DisplayNameFor(m => m.Products[0].ProductId)</th>
+            <th style="width: 120px;">@Html.DisplayNameFor(m => m.Products[0].Image)</th>
+            <th>@Html.DisplayNameFor(m => m.Products[0].Image)</th>
+            <th style="width: 340px;">@Html.DisplayNameFor(m => m.Products[0].Price)</th>
             <th style="width: 128px;"></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var prd in @Model)
+        @foreach (var prd in @Model.Products)
         {
             <tr>
                 <td>@prd.ProductId</td>
