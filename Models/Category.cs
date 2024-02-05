@@ -2,7 +2,7 @@ namespace FormsApp.Models
 {
     public class Category
     {
-        public Guid CategoryId { get; set; }
+        public int CategoryId { get; set; }
         public string? Name { get; set; }
     }
 }

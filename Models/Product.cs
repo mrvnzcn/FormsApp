@@ -5,7 +5,7 @@ namespace FormsApp.Models
     public class Product
     {
         [Display(Name="Ürün Id")]
-        public Guid ProductId { get; set; }
+        public int ProductId { get; set; }
         [Display(Name="Ürün Adı")]
         public string? Name { get; set; }
         [Display(Name="Fiyat")]
@@ -13,7 +13,7 @@ namespace FormsApp.Models
         [Display(Name="Görsel")]
         public string? Image { get; set; }
         public bool isActive { get; set; }
-        public Guid CategoryId { get; set; }
+        public int CategoryId { get; set; }
     }
 }
 
