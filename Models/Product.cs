@@ -17,6 +17,7 @@ namespace FormsApp.Models
         [Display(Name="Görsel")]
         public string? Image { get; set; }
 
+        [Required]
         public bool IsActive { get; set; }
 
         [Display(Name="Category")]
