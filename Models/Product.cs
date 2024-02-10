@@ -10,14 +10,14 @@ namespace FormsApp.Models
         [Required(ErrorMessage = "Gerekli bir alan")]
         [StringLength(100)]
         [Display(Name="Ürün Adı")]
-        public string? Name { get; set; }
+        public string Name { get; set; } = null!;
 
         [Required]
         [Range(0, 100000)]
         [Display(Name="Fiyat")]
         public decimal? Price { get; set; }
 
-        [Required]
+        
         [Display(Name="Görsel")]
         public string? Image { get; set; } = string.Empty;
 
