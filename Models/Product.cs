@@ -18,7 +18,7 @@ namespace FormsApp.Models
         public decimal? Price { get; set; }
 
         
-        [Display(Name="Görsel")]
+        [Display(Name="Resim")]
         public string? Image { get; set; } = string.Empty;
 
         
@@ -27,6 +27,7 @@ namespace FormsApp.Models
         [Display(Name="Category")]
         [Required]
         public int? CategoryId { get; set; }
+        
     }
 }
 
