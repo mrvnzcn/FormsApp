@@ -12,12 +12,12 @@ namespace FormsApp.Models
 
             
             _products.Add(new Product { ProductId = 1, Name="Iphone 14", Price = 40000, IsActive = true, Image = "1.jpg", CategoryId = 1});
-            _products.Add(new Product { ProductId = 2, Name="Iphone 15", Price = 50000, IsActive = true, Image = "2.jpg", CategoryId = 1});
+            _products.Add(new Product { ProductId = 2, Name="Iphone 15", Price = 50000, IsActive = false, Image = "2.jpg", CategoryId = 1});
             _products.Add(new Product { ProductId = 3, Name="Iphone 16", Price = 60000, IsActive = true, Image = "3.jpg", CategoryId = 1});
-            _products.Add(new Product { ProductId = 4, Name="Iphone 17", Price = 70000, IsActive = true, Image = "4.jpg", CategoryId = 1});
+            _products.Add(new Product { ProductId = 4, Name="Iphone 17", Price = 70000, IsActive = false, Image = "4.jpg", CategoryId = 1});
 
             _products.Add(new Product { ProductId = 5, Name="MacBook Air", Price = 80000, IsActive = true, Image = "5.jpg", CategoryId = 2});
-            _products.Add(new Product { ProductId = 6, Name="Macbook Pro", Price = 90000, IsActive = true, Image = "6.jpg", CategoryId = 2});
+            _products.Add(new Product { ProductId = 6, Name="Macbook Pro", Price = 90000, IsActive = false, Image = "6.jpg", CategoryId = 2});
         }
 
         public static List<Product> Products
@@ -38,7 +38,11 @@ namespace FormsApp.Models
             var entity = _products.FirstOrDefault(p=> p.ProductId == updatedProduct.ProductId);
             if(entity != null)
             {
-                entity.Name = updatedProduct.Name;
+                if(!string.IsNullOrEmpty(updatedProduct.Name))
+                {
+                    entity.Name = updatedProduct.Name;
+                }
+                
                 entity.Price = updatedProduct.Price;
                 entity.IsActive = updatedProduct.IsActive;
                 entity.Image = updatedProduct.Image;
@@ -61,6 +65,15 @@ namespace FormsApp.Models
             {
                 return _categories;
             }
-        } 
+        }
+
+        public static void EditIsActive(Product updatedProduct)
+        {
+            var entity = _products.FirstOrDefault(p=> p.ProductId == updatedProduct.ProductId);
+            if(entity != null)
+            {
+                entity.IsActive = updatedProduct.IsActive;
+            }
+        }
     }
 }
